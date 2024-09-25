@@ -2,11 +2,11 @@
 const express = require('express');
 const path = require('path');
 const app = express();
-const router = require('./routes/router');
-const dbConnect = require('./config/config');
+const router = require('./src/routes/router');
+const dbConnect = require('./src/config/config');
 
 class Server {
-    constructor(port = 3000) {
+    constructor(port = 5000) {
         this.port = port;
         this.app = express();
         this.config();

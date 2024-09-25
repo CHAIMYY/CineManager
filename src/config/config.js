@@ -4,13 +4,13 @@ const dotenv = require('dotenv')
 
 dotenv.config({ path: '.env' })
 
-const DB =process.env.MONGODB_URI
+const DB =process.env.MONGO_URI
 const dbConnect = () => {
     mongoose.connect(DB)
         .then(() => {
             console.log('DB Conected')
         }).catch(() => {
-            console.log('Pb in Conect DB')
+            console.log('Problem in Connection DB')
         })
 }
 

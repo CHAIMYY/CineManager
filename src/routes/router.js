@@ -1,18 +1,17 @@
+
 const express = require('express');
-// const AuthRouter = require('./AuthRouter');
 const router = express.Router();
+const authController = require('../controllers/authController');
 
 
-// Middleware (move these to index.js, since it's the main app)
-// router.use(cors());
-// router.use(express.json());
-
-// Define your routes
 router.get('/', (req, res) => {
     res.send('Welcome to CinéManager!');
 });
 
+router.post('/api/auth/register', authController.register);
+router.post('/api/auth/login', authController.login);
 
-// router.use('/api/Auth', AuthRouter);
+
+
 
 module.exports = router;
