@@ -3,6 +3,8 @@ const express = require('express');
 const router = express.Router();
 const authController = require('../controllers/authController');
 const filmController = require('../controllers/filmController');
+const salleController = require('../controllers/salleController');
+
 
 router.get('/', (req, res) => {
     res.send('Welcome to CinéManager!');
@@ -18,6 +20,13 @@ router.get('/api/film/getAll', filmController.getAllfilm);
 router.get('/api/film/getFilm/:id', filmController.getfilmById);
 router.put('/api/film/editFilm/:id', filmController.updateFilm);
 router.delete('/api/film/deleteFilm/:id', filmController.deleteFilm);
+
+// salle crud
+
+router.post('/api/salle/createSalle', salleController.createSalle);
+router.put('/api/salle/editSalle/:id', salleController.updateSalle);
+router.delete('/api/salle/deleteSalle/:id', salleController.deleteSalle);
+router.get('/api/salle/salleList', salleController.getAllsalle);
 
 
 module.exports = router;
