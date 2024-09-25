@@ -28,5 +28,12 @@ router.put('/api/salle/editSalle/:id', salleController.updateSalle);
 router.delete('/api/salle/deleteSalle/:id', salleController.deleteSalle);
 router.get('/api/salle/salleList', salleController.getAllsalle);
 
+// seance curd
+
+router.post('/api/seance/createSeance', seanceController.createSeance);
+router.get('/api/seance/seanceList', seanceController.getAllseance);
+router.put('/api/seance/editSeance/:id', seanceController.updateSeance);
+router.delete('/api/seance/deleteSeance/:id', seanceController.deleteSeance);
+
 
 module.exports = router;
