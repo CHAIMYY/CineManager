@@ -6,21 +6,26 @@ const userModel = require('../models/userModel');
 
 const authenticateJWT = async (req, res, next) => {
   try {
+   
     const authHeader = req.header('Authorization');
 
     
   
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
+       
         return res.status(401).send({ error: 'Authorization token missing or invalid.' });
     }
     
-  
+   
     const token = authHeader.replace('Bearer ', '');
-
+ 
     console.log('JWT Secret:', process.env.JWT_SECRET || 'RESTFULAPIs');
 
 
+
+   
     const decoded = jwt.verify(token, process.env.JWT_SECRET || 'RESTFULAPIs');
+
    
    
     console.log('Authorization Header:', req.header('Authorization'));
@@ -42,7 +47,7 @@ const authenticateJWT = async (req, res, next) => {
 
 const isAdmin = (req, res, next) => {
   if (req.user.role !== 'admin') {
-    return res.sendStatus(403); 
+    return res.sendStatus(403);
   }
   next();
 };

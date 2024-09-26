@@ -41,3 +41,14 @@ exports.createAdmin = async function(req, res) {
       res.status(500).json({ message: 'Error updating admin', error: err });
     }
   };
+
+  exports.deleteadmin = async (req, res) => {
+    try {
+      const deleteadmin = await User.findByIdAndDelete(req.params.id);
+      if (!deleteadmin) return res.status(404).json({ message: 'admin not found' });
+      res.json({ message: 'admin deleted', User: deleteadmin });
+    } catch (err) {
+      res.status(500).json({ message: 'Error deleting admin', error: err });
+    }
+  };
+  
