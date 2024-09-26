@@ -40,6 +40,7 @@ router.delete('/api/seance/deleteSeance/:id', authenticateJWT,isAdmin,seanceCont
 // admin crud
 
 router.post('/api/admin/createAdmin', authenticateJWT,isAdmin,adminController.createAdmin);
+router.get('/api/admin/getAlladmin', authenticateJWT,isAdmin,adminController.getAlladmin);
 
 
 module.exports = router;

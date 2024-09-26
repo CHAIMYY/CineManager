@@ -23,3 +23,11 @@ exports.createAdmin = async function(req, res) {
     }
   };
 
+  exports.getAlladmin= async (req, res) => {
+    try {
+        const adminlist = await User.find({ role: 'admin' });
+      res.json(adminlist);
+    } catch (err) {
+      res.status(500).json({ message: 'Error fetching admins list', error: err });
+    }
+  };
