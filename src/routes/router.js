@@ -5,6 +5,7 @@ const authController = require('../controllers/authController');
 const filmController = require('../controllers/filmController');
 const salleController = require('../controllers/salleController');
 const seanceController = require('../controllers/seanceController');
+const adminController = require('../controllers/adminController');
 const { authenticateJWT, isAdmin }  = require('../middleware/authMiddleware');
 
 router.get('/', (req, res) => {
@@ -36,8 +37,9 @@ router.get('/api/seance/seanceList',authenticateJWT,isAdmin, seanceController.ge
 router.put('/api/seance/editSeance/:id', authenticateJWT,isAdmin,seanceController.updateSeance);
 router.delete('/api/seance/deleteSeance/:id', authenticateJWT,isAdmin,seanceController.deleteSeance);
 
+// admin crud
 
-
+router.post('/api/admin/createAdmin', authenticateJWT,isAdmin,adminController.createAdmin);
 
 
 module.exports = router;
