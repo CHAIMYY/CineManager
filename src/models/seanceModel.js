@@ -1,12 +1,13 @@
 const mongoose = require('mongoose');
 const Film = require("./filmModel");
 const Salle = require("./salleModel");
-const USer = require("./userModel");
+const User = require("./userModel");
+const Schema = mongoose.Schema;
 
 const seanceSchema = new Schema({
   user: {
     type: Schema.Types.ObjectId,
-    ref: "USer",
+    ref: "User",
     required: true,
   },
   film: {
