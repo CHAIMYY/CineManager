@@ -1,15 +1,12 @@
 const mongoose = require('mongoose');
 const Film = require("./filmModel");
 const Salle = require("./salleModel");
-const User = require("./userModel");
+const Seat = require("./seatModel");
 const Schema = mongoose.Schema;
 
+
 const seanceSchema = new Schema({
-  user: {
-    type: Schema.Types.ObjectId,
-    ref: "User",
-    required: true,
-  },
+ 
   film: {
     type: Schema.Types.ObjectId,
     ref: "Film",
@@ -20,22 +17,38 @@ const seanceSchema = new Schema({
     ref: "Salle",
     required: true,
   },
-  horaire: {
+  startTime: { 
     type: Date,
-    required: true,
+    required: true 
   },
-  tarif: {
-    type: Number,
-    required: true,
+  endTime: { 
+    type: Date, 
+    required: true 
   },
-  placesDisponibles: {
-    type: Number,
-    required: true,
-  },
-  archived_seance: {
-    type: Boolean,
-    default: false,
-  },
+  availableSeats: [{ 
+    type: Schema.Types.ObjectId, 
+    ref: 'Seat' 
+  }],
+  // tarif: {
+  //   type: Number,
+  //   required: true
+  // }
+  // horaire: {
+  //   type: Date,
+  //   required: true,
+  // },
+  // tarif: {
+  //   type: Number,
+  //   required: true,
+  // },
+  // placesDisponibles: {
+  //   type: Number,
+  //   required: true,
+  // },
+  // archived_seance: {
+  //   type: Boolean,
+  //   default: false,
+  // },
 });
 
 const seanceModel = mongoose.model("seances", seanceSchema);

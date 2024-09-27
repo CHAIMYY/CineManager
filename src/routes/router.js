@@ -32,7 +32,7 @@ router.get('/api/salle/salleList',authenticateJWT,isAdmin, salleController.getAl
 
 // seance curd
 
-router.post('/api/seance/createSeance', authenticateJWT,isAdmin,seanceController.createSeance);
+// router.post('/api/seance/createSeance', authenticateJWT,isAdmin,seanceController.createSeance);
 router.get('/api/seance/seanceList',authenticateJWT,isAdmin, seanceController.getAllseance);
 router.put('/api/seance/editSeance/:id', authenticateJWT,isAdmin,seanceController.updateSeance);
 router.delete('/api/seance/deleteSeance/:id', authenticateJWT,isAdmin,seanceController.deleteSeance);
@@ -43,6 +43,8 @@ router.post('/api/admin/createAdmin', authenticateJWT,isAdmin,adminController.cr
 router.get('/api/admin/getAlladmin', authenticateJWT,isAdmin,adminController.getAlladmin);
 router.put('/api/admin/updateadmin/:id', authenticateJWT,isAdmin,adminController.updateadmin);
 router.delete('/api/admin/deleteadmin/:id', authenticateJWT,isAdmin,adminController.deleteadmin);
+
+
 
 
 module.exports = router;

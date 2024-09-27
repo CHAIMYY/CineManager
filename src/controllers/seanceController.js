@@ -1,6 +1,7 @@
 
 const mongoose = require('mongoose');
 const Seance = require('../models/seanceModel');
+const Salle = require('../models/salleModel');
 
 exports.createSeance = async (req, res) => {
     try {
@@ -11,6 +12,8 @@ exports.createSeance = async (req, res) => {
       res.status(500).json({ message: 'Error creating seance', error: err });
     }
   };
+
+
 
 exports.getAllseance = async (req, res) => {
     try {

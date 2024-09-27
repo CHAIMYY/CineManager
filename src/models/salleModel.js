@@ -6,15 +6,11 @@ const salleSchema = new mongoose.Schema({
      required: true 
  },
 
- totalSeats:
+ capacity:
  { type: Number,
    required: true 
  },
-
-  availableSeats: {
-  type: Number,
-  required: true 
- }, 
+ 
 
   location: { 
     type: String,
