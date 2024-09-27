@@ -55,7 +55,7 @@ exports.createSeance = async (req, res) => {
   const { film, salle, startTime, endTime, price } = req.body;
 
   try {
-  
+  // .populate('availableSeats')
     const room = await Salle.findById(salle).populate('availableSeats');
     const filmDetails = await Film.findById(film);  
 
@@ -69,6 +69,7 @@ exports.createSeance = async (req, res) => {
 
    
     const availableSeats = room.availableSeats.filter(seat => !seat.isReserved).length;
+    // const availableSeatsCount = availableSeats.length; 
     console.log(availableSeats);
 
     if (availableSeats === 0) {
@@ -94,7 +95,7 @@ exports.createSeance = async (req, res) => {
       price
     });
 
-    // Save the seance
+   
     await seance.save();
 
     res.status(201).json(seance);

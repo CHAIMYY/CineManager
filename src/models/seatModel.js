@@ -9,11 +9,6 @@ const seatSchema = new Schema({
     type: String,
     required: true 
     }, 
-    // salle: { 
-    // type: Schema.Types.ObjectId, 
-    // ref: 'Salle',
-    // required: true 
-    // },
     isReserved: {
     type: Boolean, 
     default: false 

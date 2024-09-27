@@ -3,7 +3,16 @@ const Seat = require("./seatModel");
 const Schema = mongoose.Schema;
 
 
-
+const seatSchema = new Schema({
+  number: { 
+  type: Number,
+  required: true 
+  }, 
+  isReserved: {
+  type: Boolean, 
+  default: false 
+  } 
+});
 
 
 
@@ -18,23 +27,21 @@ const salleSchema = new Schema({
    required: true 
  },
 
- availableSeats: [{ 
+//  availableSeats: [{ 
  
-    number: { 
-    type: String,
-    required: true 
-    }, 
-    // salle: { 
-    // type: Schema.Types.ObjectId, 
-    // ref: 'Salle',
-    // required: true 
-    // },
-    isReserved: {
-    type: Boolean, 
-    default: false 
+//     number: { 
+//     type: String,
+//     required: true 
+//     }, 
+  
+//     isReserved: {
+//     type: Boolean, 
+//     default: false 
    
-  }
-}],
+//   }
+// }],
+
+availableSeats : [seatSchema],
   location: { 
     type: String,
     required: true

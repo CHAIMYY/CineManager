@@ -11,16 +11,15 @@ const reservationSchema = new Schema({
     ref: 'User', 
     required: true 
 }, 
-    session: { 
+    seance: { 
     type: Schema.Types.ObjectId, 
     ref: 'Seance', 
     required: true 
 }, 
-    seats: [{ 
-    type: Schema.Types.ObjectId, 
-    ref: 'Seat', 
-    required: true 
-}], 
+  numOfSeats: {
+    type: Number,
+    required: true,
+  }, 
     date: { 
     type: Date, 
     default: Date.now 

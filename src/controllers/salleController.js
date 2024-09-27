@@ -14,15 +14,18 @@ exports.createSalle = async (req, res) => {
     const seats = [];
     for (let i = 1; i <= capacity; i++) {
       seats.push({
-        number: `Seat-${i}`,
+        number: i,
         isReserved: false
       });
+
+     
     }
 
 
     const newSalle = new Salle({
       name,
       capacity,
+      availableSeats: seats,
       location
     });
 

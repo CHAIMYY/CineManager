@@ -6,6 +6,7 @@ const filmController = require('../controllers/filmController');
 const salleController = require('../controllers/salleController');
 const seanceController = require('../controllers/seanceController');
 const adminController = require('../controllers/adminController');
+const reservationController = require('../controllers/reservationController');
 const { authenticateJWT, isAdmin }  = require('../middleware/authMiddleware');
 
 router.get('/', (req, res) => {
@@ -44,6 +45,9 @@ router.get('/api/admin/getAlladmin', authenticateJWT,isAdmin,adminController.get
 router.put('/api/admin/updateadmin/:id', authenticateJWT,isAdmin,adminController.updateadmin);
 router.delete('/api/admin/deleteadmin/:id', authenticateJWT,isAdmin,adminController.deleteadmin);
 
+// reservation
+
+router.post('/api/reservation/createReservation', authenticateJWT,isAdmin,reservationController.createReservation);
 
 
 

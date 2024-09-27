@@ -25,10 +25,10 @@ const seanceSchema = new Schema({
     type: Date, 
     required: true 
   },
-  availableSeats: [{ 
-    type: Schema.Types.ObjectId, 
-    ref: 'Seat' 
-  }],
+  // availableSeats: [{ 
+  //   type: Schema.Types.ObjectId, 
+  //   ref: 'Seat' 
+  // }],
   dispo: {
     type: Number,
     required: true

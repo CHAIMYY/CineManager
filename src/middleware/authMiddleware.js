@@ -19,7 +19,7 @@ const authenticateJWT = async (req, res, next) => {
    
     const token = authHeader.replace('Bearer ', '');
  
-    console.log('JWT Secret:', process.env.JWT_SECRET || 'RESTFULAPIs');
+    // console.log('JWT Secret:', process.env.JWT_SECRET || 'RESTFULAPIs');
 
 
 
@@ -28,7 +28,7 @@ const authenticateJWT = async (req, res, next) => {
 
    
    
-    console.log('Authorization Header:', req.header('Authorization'));
+    // console.log('Authorization Header:', req.header('Authorization'));
     
     
     const user = await userModel.findOne({ _id: decoded._id});
