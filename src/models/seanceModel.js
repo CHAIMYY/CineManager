@@ -29,22 +29,15 @@ const seanceSchema = new Schema({
     type: Schema.Types.ObjectId, 
     ref: 'Seat' 
   }],
-  // tarif: {
-  //   type: Number,
-  //   required: true
-  // }
-  // horaire: {
-  //   type: Date,
-  //   required: true,
-  // },
-  // tarif: {
-  //   type: Number,
-  //   required: true,
-  // },
-  // placesDisponibles: {
-  //   type: Number,
-  //   required: true,
-  // },
+  dispo: {
+    type: Number,
+    required: true
+  },
+  price: {
+    type: Number,
+    required: true
+  }
+ 
   // archived_seance: {
   //   type: Boolean,
   //   default: false,

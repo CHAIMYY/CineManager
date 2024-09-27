@@ -32,7 +32,7 @@ router.get('/api/salle/salleList',authenticateJWT,isAdmin, salleController.getAl
 
 // seance curd
 
-// router.post('/api/seance/createSeance', authenticateJWT,isAdmin,seanceController.createSeance);
+router.post('/api/seance/createSeance', authenticateJWT,isAdmin,seanceController.createSeance);
 router.get('/api/seance/seanceList',authenticateJWT,isAdmin, seanceController.getAllseance);
 router.put('/api/seance/editSeance/:id', authenticateJWT,isAdmin,seanceController.updateSeance);
 router.delete('/api/seance/deleteSeance/:id', authenticateJWT,isAdmin,seanceController.deleteSeance);

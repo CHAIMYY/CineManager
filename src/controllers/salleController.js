@@ -7,8 +7,7 @@ const Seance = require('../models/seanceModel');
 
 
 exports.createSalle = async (req, res) => {
-  const { name, capacity ,
-    location } = req.body;
+  const { name, capacity , location } = req.body;
 
   try {
 

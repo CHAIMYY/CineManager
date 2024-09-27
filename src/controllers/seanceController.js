@@ -2,17 +2,108 @@
 const mongoose = require('mongoose');
 const Seance = require('../models/seanceModel');
 const Salle = require('../models/salleModel');
+const Film = require('../models/filmModel');
 
+// exports.createSeance = async (req, res) => {
+//     try {
+//       const seance = new Seance(req.body);
+//       await seance.save();
+//       res.status(201).json(seance);
+//     } catch (err) {
+//       res.status(500).json({ message: 'Error creating seance', error: err });
+//     }
+//   };
+
+// exports.createSeance = async (req, res) => {
+  
+//     const { film, salle, startTime, endTime , dispo , tarif} = req.body;
+//     // .populate('capacity')
+   
+//     try {
+//       const room = await Salle.findById(salle);
+//       if (!room) {
+//         return res.status(404).json({ error: 'Room not found' });
+//       }
+     
+     
+//       const availableSeats = room.availableSeats.filter(seat => !seat.isReserved).length;
+//       // const availableSeats = room.availableSeats.filter(Seat => Seat.availableS).length;
+
+//   console.log('hi');
+
+//       if (availableSeats === 0) {
+//         return res.status(400).json({ message: 'No available seats in the room' });
+//       }
+
+//       const seance = new Seance({
+//         film,
+//         salle: room,
+//         startTime,
+//         endTime,
+//         dispo: availableSeats ,
+//         tarif
+//       });
+  
+//       await seance.save();
+//       res.status(201).json(seance);
+//     } catch (error) {
+//       res.status(500).json({ error: 'Error creating session' });
+//     }
+//   };
 exports.createSeance = async (req, res) => {
-    try {
-      const seance = new Seance(req.body);
-      await seance.save();
-      res.status(201).json(seance);
-    } catch (err) {
-      res.status(500).json({ message: 'Error creating seance', error: err });
-    }
-  };
 
+  const { film, salle, startTime, endTime, price } = req.body;
+
+  try {
+  
+    const room = await Salle.findById(salle).populate('availableSeats');
+    const filmDetails = await Film.findById(film);  
+
+    if (!room) {
+      return res.status(404).json({ error: 'Room not found' });
+    }
+
+    if (!filmDetails) {
+      return res.status(404).json({ error: 'Film not found' });
+    }
+
+   
+    const availableSeats = room.availableSeats.filter(seat => !seat.isReserved).length;
+    console.log(availableSeats);
+
+    if (availableSeats === 0) {
+      return res.status(400).json({ message: 'No available seats in the room' });
+    }
+
+    
+    const seance = new Seance({
+      film: filmDetails._id,
+      salle: room._id,
+      startTime,
+      endTime,
+      dispo: availableSeats,
+      price
+    });
+
+    console.log({
+      film: filmDetails._id,  
+      salle: room._id,
+      startTime,
+      endTime,
+      dispo: availableSeats,
+      price
+    });
+
+    // Save the seance
+    await seance.save();
+
+    res.status(201).json(seance);
+
+  } catch (error) {
+    console.log('Error creating session:', error);
+    res.status(500).json({ error: 'Error creating session' });
+  }
+};
 
 
 exports.getAllseance = async (req, res) => {
